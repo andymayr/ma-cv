@@ -1,15 +1,14 @@
-let slideIndex = 0;
-showSlides();
+// Función para hacer scroll a una sección específica
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
 
-function showSlides() {
-  const slides = document.getElementsByClassName("slide");
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {
-    slideIndex = 1;
-  }
-  slides[slideIndex - 1].style.display = "block";
-  setTimeout(showSlides, 3000); // Change slide every 3 seconds
+// Función para abrir el WhatsApp directamente
+function contactWhatsApp() {
+  window.location.href = "https://wa.me/5212222393453";
+}
+
+// Función para abrir el email directamente
+function contactEmail() {
+  window.location.href = "mailto:mayerandreas3@gmail.com";
 }

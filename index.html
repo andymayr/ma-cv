@@ -1,109 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CV - Andreas Mayer Arriaga</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andreas Mayer Arriaga - Professional Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: #ddd;
+            text-align: center;
+        }
+        header {
+            background: #222;
+            color: #fff;
+            padding: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 3px solid #666;
+        }
+        .nav-buttons, .contact-buttons {
+            margin-top: 10px;
+        }
+        .nav-buttons button, .contact-buttons button {
+            background-color: #555;
+            color: white;
+            border: 2px solid #999;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .nav-buttons button:hover, .contact-buttons button:hover {
+            background-color: #777;
+            border-color: #bbb;
+        }
+        section {
+            max-width: 900px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        h2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #bbb;
+            border-bottom: 2px solid #777;
+            padding-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Andreas Mayer Arriaga</h1>
+        <p>Graduate | Passionate about Sustainability & Innovation</p>
+        <div class="nav-buttons">
+            <button onclick="scrollToSection('education')">Education 🎓</button>
+            <button onclick="scrollToSection('experience')">Work Experience 💼</button>
+            <button onclick="scrollToSection('skills')">Skills & Interests 🚀</button>
+        </div>
+    </header>
 
-  <!-- Header / Hero Section -->
-  <header class="hero-section">
-    <h1>Hello, I'm <span class="highlight">Andreas Mayer Arriaga</span></h1>
-    <p>Teisendorf, BY | <a href="mailto:mayerandreas3@gmail.com">mayerandreas3@gmail.com</a> | +52 2222393453</p>
-  </header>
+    <section id="education">
+        <h2>Education 🎓</h2>
+        <ul>
+            <li><strong>Hochschule der Bayerischen Wirtschaft (HDBW)</strong> - Bachelor's Degree (2019-2023)</li>
+            <li><strong>Arden University</strong> - MSc Project Management (In Progress, 2024-2025)</li>
+        </ul>
+    </section>
 
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="#about">About Me</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#voluntary">Voluntary Work</a></li>
-      <li><a href="#skills">Skills & Interests</a></li>
-      <li><a href="#awards">Awards</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+    <section id="experience">
+        <h2>Work Experience 💼</h2>
+        <ul>
+            <li><strong>Amazon - Change & Sustainability Ambassador</strong> (2022-2023)</li>
+            <li><strong>Amazon - Operations & Process Intern</strong> (2022)</li>
+            <li><strong>Somos Censura - Data & Process Optimization</strong> (2022-2023)</li>
+            <li><strong>Zenjob - Part-time Student Worker</strong> (2020-2021)</li>
+        </ul>
+    </section>
 
-  <!-- Slideshow Section -->
-  <div class="slideshow-container">
-    <div class="slide fade">
-      <img src="2021-10-09_11-44-10_447.jpeg" alt="Award Ceremony">
-    </div>
-    <div class="slide fade">
-      <img src="2023-05-25_08-17-56_000.jpeg" alt="Mountain Hike">
-    </div>
-    <div class="slide fade">
-      <img src="2023-12-18_15-33-46_887.jpeg" alt="Event Scene">
-    </div>
-  </div>
+    <section id="skills">
+        <h2>Skills & Interests 🚀</h2>
+        <p><strong>Technical Skills:</strong> Excel, Tableau, Python, API handling, AI integration, HTML, CSS, JavaScript.</p>
+        <p><strong>Languages:</strong> Spanish (C2), German (C2), English (C1).</p>
+        <p><strong>Interests:</strong> Sustainable development, blockchain, calisthenics, skiing, scuba diving, martial arts, music.</p>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="section">
-    <h2>About Me</h2>
-    <p>
-      I am an aspiring project manager and process optimizer with experience in sustainable warehousing,
-      Six Sigma methodologies, and cross-functional collaboration. Passionate about leveraging data-driven
-      solutions to improve operational efficiency and reduce environmental impact.
-    </p>
-  </section>
+    <section id="contact">
+        <h2>Contact 📞</h2>
+        <div class="contact-buttons">
+            <button onclick="location.href='mailto:mayerandreas3@gmail.com'">📧 Email Me</button>
+            <button onclick="location.href='https://wa.me/5212222393453'">💬 WhatsApp Me</button>
+        </div>
+    </section>
 
-  <!-- Education Section -->
-  <section id="education" class="section">
-    <h2>Education</h2>
-    <div class="education-item">
-      <h3>Arden University</h3>
-      <p><strong>MSc Project Management (In Progress)</strong> (2024 – Exp. 2025)</p>
-      <ul>
-        <li>Online Master's program focusing on advanced project management strategies</li>
-        <li>Enhancing problem-solving skills and Six Sigma methodologies</li>
-        <li>Aiming for PMP certification from PMI</li>
-      </ul>
-    </div>
-    <div class="education-item">
-      <h3>Hochschule der Bayerischen Wirtschaft (HDBW)</h3>
-      <p><strong>Business Administration (210 ECTS)</strong> (2019 – 2023, Munich, BY)</p>
-      <ul>
-        <li>Transitioned from Mexico to Germany for university education</li>
-        <li>Collaborated with Amazon on a thesis focused on sustainable fulfillment warehousing</li>
-        <li>Demonstrated expertise in environmental considerations for logistics operations</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Experience Section -->
-  <section id="experience" class="section">
-    <h2>Experience</h2>
-    <div class="job">
-      <h3>Amazon, Gera, TH</h3>
-      <p><strong>Change & Sustainability Ambassador</strong> (Oct. 2022 – Jun. 2023)</p>
-      <ul>
-        <li>Improved recycling rates from 77% to over 90%, diverting tons of waste</li>
-        <li>Collaborated with Veolia Germany to establish innovative recycling initiatives</li>
-        <li>Utilized Six Sigma methodologies to optimize workflows</li>
-      </ul>
-      <p><strong>Project Management Intern</strong> (Apr. 2022 – Sep. 2022)</p>
-      <ul>
-        <li>Enhanced operational efficiency at LEJ5 Amazon logistics center</li>
-        <li>Collaborated on 20+ projects to improve working conditions</li>
-        <li>Featured in \"Amazon DE-Stars\" commercial</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section">
-    <h2>Contact</h2>
-    <p>Reach out at <a href="mailto:mayerandreas3@gmail.com">mayerandreas3@gmail.com</a> or call +52 2222393453.</p>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Andreas Mayer Arriaga. All Rights Reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
+    <script>
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
