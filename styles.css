@@ -1,16 +1,33 @@
-/* Estilo General */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #1a1a1a, #333);
-  color: #ddd;
-  text-align: center;
+:root {
+  --primary-bg: #1a1a1a;
+  --secondary-bg: #333;
+  --header-bg: #222;
+  --button-bg: #555;
+  --button-hover: #777;
+  --button-border: #999;
+  --button-border-hover: #bbb;
+  --text-color: #ddd;
+  --heading-color: #bbb;
+  --section-bg: rgba(255, 255, 255, 0.1);
 }
 
-/* Encabezado */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+  color: var(--text-color);
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Header */
 header {
-  background: #222;
+  background: var(--header-bg);
   color: #fff;
   padding: 20px;
   text-transform: uppercase;
@@ -18,47 +35,63 @@ header {
   border-bottom: 3px solid #666;
 }
 
-/* Botones de navegación y contacto */
+/* Navigation and Contact Buttons */
 .nav-buttons, .contact-buttons {
   margin-top: 10px;
 }
 
 .nav-buttons button, .contact-buttons button {
-  background-color: #555;
+  background-color: var(--button-bg);
   color: white;
-  border: 2px solid #999;
+  border: 2px solid var(--button-border);
   padding: 10px 20px;
   margin: 5px;
   cursor: pointer;
   border-radius: 5px;
   font-size: 16px;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.nav-buttons button:hover, .contact-buttons button:hover {
-  background-color: #777;
-  border-color: #bbb;
+.nav-buttons button:hover,
+.contact-buttons button:hover,
+.nav-buttons button:focus,
+.contact-buttons button:focus {
+  background-color: var(--button-hover);
+  border-color: var(--button-border-hover);
+  outline: none;
 }
 
-/* Secciones */
+/* Sections */
 section {
   max-width: 900px;
   margin: 20px auto;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--section-bg);
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
+  text-align: left;
 }
 
-/* Títulos */
+/* Headings */
 h2 {
   display: flex;
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #bbb;
+  color: var(--heading-color);
   border-bottom: 2px solid #777;
   padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 600px) {
+  header, section {
+    padding: 15px;
+  }
+  .nav-buttons button, .contact-buttons button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
 }
