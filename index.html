@@ -1,124 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andreas Mayer Arriaga - Professional Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #1a1a1a, #333);
-            color: #ddd;
-            text-align: center;
-        }
-        header {
-            background: #222;
-            color: #fff;
-            padding: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-bottom: 3px solid #666;
-        }
-        .nav-buttons, .contact-buttons {
-            margin-top: 10px;
-        }
-        .nav-buttons button, .contact-buttons button {
-            background-color: #555;
-            color: white;
-            border: 2px solid #999;
-            padding: 10px 20px;
-            margin: 5px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-        .nav-buttons button:hover, .contact-buttons button:hover {
-            background-color: #777;
-            border-color: #bbb;
-        }
-        section {
-            max-width: 900px;
-            margin: 20px auto;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-        h2 {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #bbb;
-            border-bottom: 2px solid #777;
-            padding-bottom: 5px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andreas Mayer Arriaga - Professional Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1a1a1a, #333);
+      color: #ddd;
+      text-align: center;
+    }
+    header {
+      background: #222;
+      color: #fff;
+      padding: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      border-bottom: 3px solid #666;
+    }
+    .nav-buttons, .contact-buttons {
+      margin-top: 10px;
+    }
+    .nav-buttons button, .contact-buttons button {
+      background-color: #555;
+      color: white;
+      border: 2px solid #999;
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    .nav-buttons button:hover, .contact-buttons button:hover {
+      background-color: #777;
+      border-color: #bbb;
+    }
+    section {
+      max-width: 900px;
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      text-align: left;
+    }
+    h2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #bbb;
+      border-bottom: 2px solid #777;
+      padding-bottom: 5px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+    li strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Andreas Mayer Arriaga</h1>
-        <p>Graduate | Passionate about Sustainability & Innovation</p>
-        <div class="nav-buttons">
-            <button onclick="scrollToSection('education')">Education 🎓</button>
-            <button onclick="scrollToSection('experience')">Work Experience 💼</button>
-            <button onclick="scrollToSection('skills')">Skills & Interests 🚀</button>
-        </div>
-    </header>
+  <header>
+    <h1>Andreas Mayer Arriaga</h1>
+    <p>Graduate | Passionate about Sustainability & Innovation</p>
+    <div class="nav-buttons">
+      <button onclick="scrollToSection('personal')">Personal Info</button>
+      <button onclick="scrollToSection('education')">Education 🎓</button>
+      <button onclick="scrollToSection('experience')">Work Experience 💼</button>
+      <button onclick="scrollToSection('voluntary')">Voluntary Experience 🤝</button>
+      <button onclick="scrollToSection('skills')">Skills & Interests 🚀</button>
+      <button onclick="scrollToSection('contact')">Contact 📞</button>
+    </div>
+  </header>
 
-    <section id="education">
-        <h2>Education 🎓</h2>
-        <ul>
-            <li><strong>Hochschule der Bayerischen Wirtschaft (HDBW)</strong> - Bachelor's Degree in Business & Logistics (2019-2023)</li>
-            <li><strong>Arden University</strong> - MSc Project Management (In Progress, 2024-2025)</li>
-        </ul>
-    </section>
+  <section id="personal">
+    <h2>Personal Information</h2>
+    <ul>
+      <li><strong>Name:</strong> Andreas Mayer Arriaga</li>
+      <li><strong>Location:</strong> Teisendorf, BY</li>
+      <li><strong>Email:</strong> mayerandreas3@gmail.com</li>
+      <li><strong>Phone:</strong> +49 17645251547</li>
+    </ul>
+  </section>
 
-    <section id="experience">
-        <h2>Work Experience 💼</h2>
-        <ul>
-            <li><strong>Amazon - Change & Sustainability Ambassador</strong> (2022-2023)<br>
-                Increased recycling rates from 77% to 90% through optimized waste management.<br>
-                Developed recycling initiatives with Veolia Germany, diverting thousands of tons from incineration.<br>
-                Applied Six Sigma methodologies for efficient recycling pathways.
-            </li>
-            <li><strong>Amazon - Project Management Intern</strong> (2022)<br>
-                Increased operational efficiency at LEJ5 fulfillment center.<br>
-                Improved workplace conditions by leading 20+ initiatives.<br>
-                Streamlined vendor management and provided weekly reports to site leadership.
-            </li>
-            <li><strong>Somos Censura - Project Specialist</strong> (2022-2023)<br>
-                Introduced weekly and quarterly reviews, enhancing team alignment with the CEO and Board.<br>
-                Optimized big data processes, driving data-driven decision-making.
-            </li>
-        </ul>
-    </section>
+  <section id="education">
+    <h2>Education 🎓</h2>
+    <ul>
+      <li>
+        <strong>Hochschule der Bayerischen Wirtschaft (HDBW)</strong>
+        <br><em>Bachelor's Degree in Business & Logistics (2019–2023)</em>
+        <br><em>Location:</em> Munich, BY
+        <br>Successfully transitioned from Mexico to Germany after completing the German Abitur.
+        <br>Collaborated with Amazon on a thesis optimizing sustainable fulfillment warehousing, demonstrating expertise in environmental logistics.
+      </li>
+      <li>
+        <strong>Arden University</strong>
+        <br><em>MSc Project Management (In Progress, 2024–Exp.2025)</em>
+        <br>Currently pursuing an online Master's in Project Management to enhance problem-solving skills, optimize processes, and apply Six Sigma methodologies.
+        <br>Aim to achieve PMP certification from PMI.
+      </li>
+      <li>
+        <strong>Arden University</strong>
+        <br><em>MSc Psychology (discontinued, Oct.2023–Feb.2024)</em>
+        <br>Briefly pursued a Master's in Psychology, gaining valuable insights before redirecting focus toward project management.
+      </li>
+    </ul>
+  </section>
 
-    <section id="skills">
-        <h2>Skills & Interests 🚀</h2>
-        <p><strong>Technical Skills:</strong> Excel, Tableau, Python, API handling, AI integration, HTML, CSS, JavaScript.</p>
-        <p><strong>Languages:</strong> Spanish (C2), German (C2), English (C1).</p>
-        <p><strong>Interests:</strong> Sustainable logistics, blockchain, calisthenics, skiing, scuba diving, martial arts, music.</p>
-    </section>
+  <section id="experience">
+    <h2>Work Experience 💼</h2>
+    <ul>
+      <li>
+        <strong>Amazon – Change & Sustainability Ambassador</strong>
+        <br><em>Gera, TH | Oct.2022–Jun.2023</em>
+        <br>• Increased recycling rates from 77% to 90% through optimized waste management.
+        <br>• Developed recycling initiatives with Veolia Germany, diverting thousands of tons from incineration.
+        <br>• Applied Six Sigma DMAIC/DMAIDV methodologies to create efficient recycling pathways.
+      </li>
+      <li>
+        <strong>Amazon – Project Management Intern</strong>
+        <br><em>Gera, TH | Apr.2022–Sep.2022</em>
+        <br>• Increased operational efficiency at the LEJ5 fulfillment center using Six Sigma methodologies, optimizing workflows and reducing cycle times.
+        <br>• Improved workplace conditions by leading 20+ initiatives at the Gera warehouse, enhancing employee satisfaction and retention.
+        <br>• Streamlined vendor management and provided weekly reports to site leadership, driving data-backed decision-making.
+        <br>• Featured in the "Amazon DE-Stars" commercial, showcasing Amazon’s commitment to employee engagement and innovation.
+      </li>
+      <li>
+        <strong>Somos Censura – Project Specialist</strong>
+        <br><em>Remote, Mexico City | Apr.2024–Jun.2024</em>
+        <br>• Introduced weekly and quarterly reviews, enhancing team alignment with the CEO and Board.
+        <br>• Optimized big data processes, driving data-driven decision-making.
+      </li>
+      <li>
+        <strong>Zenjob – Part-time Student Worker</strong>
+        <br><em>Munich, BY | Oct.2020–Oct.2021</em>
+        <br>• Performed diverse administrative and sales-related tasks as part of the Munich student job program.
+        <br>• Gained experience as a Covid Hostess at Messe München, cashier at Edeka, and floor sales staff at Primark and Superdry.
+      </li>
+    </ul>
+  </section>
 
-    <section id="contact">
-        <h2>Contact 📞</h2>
-        <div class="contact-buttons">
-            <button onclick="location.href='mailto:mayerandreas3@gmail.com'">📧 Email Me</button>
-            <button onclick="location.href='https://wa.me/5212222393453'">💬 WhatsApp Me</button>
-        </div>
-    </section>
+  <section id="voluntary">
+    <h2>Voluntary Experience 🤝</h2>
+    <ul>
+      <li>
+        <strong>Laser Dental Clinic by Armacu – Part-time Admin Support Staff</strong>
+        <br><em>Puebla, Mexico | Aug.2017–Sep.2019 &amp; Oct.2023–Mar.2024</em>
+        <br>• Managed social media, patient KPI reporting, invoicing, and website updates for a family-owned dental practice.
+        <br>• Advised on operations and strategic decisions while overseeing website development and maintenance.
+      </li>
+    </ul>
+  </section>
 
-    <script>
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
+  <section id="skills">
+    <h2>Skills & Interests 🚀</h2>
+    <p><strong>Technical Skills:</strong> Proficient in Excel (Advanced), Tableau, Python, API handling, AI integration, Microsoft Office (Excel, Word, PowerPoint, Outlook), and web development (HTML, CSS, JavaScript).</p>
+    <p><strong>Languages:</strong> Spanish (C2), German (C2), English (C1).</p>
+    <p><strong>Interests:</strong> Sustainable logistics (featured in OTZ), blockchain & cryptocurrencies, calisthenics, alpine skiing, scuba diving (Advanced Open Water), martial arts (Junior Black Belt in Taekwondo), soccer & American football (UDLAP), music (piano & guitar), and community service (recognized by UNAM).</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact 📞</h2>
+    <div class="contact-buttons">
+      <button onclick="location.href='mailto:mayerandreas3@gmail.com'">📧 Email Me</button>
+      <button onclick="location.href='https://wa.me/4917645251547'">💬 WhatsApp Me</button>
+    </div>
+  </section>
+
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
