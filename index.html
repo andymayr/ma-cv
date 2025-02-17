@@ -4,73 +4,101 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Andreas Mayer Arriaga - Professional Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #333;
+      --header-bg: #222;
+      --button-bg: #555;
+      --button-hover: #777;
+      --button-border: #999;
+      --button-border-hover: #bbb;
+      --text-color: #ddd;
+      --heading-color: #bbb;
+      --section-bg: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #1a1a1a, #333);
-      color: #ddd;
-      text-align: center;
+      box-sizing: border-box;
     }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+      color: var(--text-color);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* Header */
     header {
-      background: #222;
+      background: var(--header-bg);
       color: #fff;
       padding: 20px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       border-bottom: 3px solid #666;
     }
+
+    /* Navigation and contact buttons */
     .nav-buttons, .contact-buttons {
       margin-top: 10px;
     }
+
     .nav-buttons button, .contact-buttons button {
-      background-color: #555;
+      background-color: var(--button-bg);
       color: white;
-      border: 2px solid #999;
+      border: 2px solid var(--button-border);
       padding: 10px 20px;
       margin: 5px;
       cursor: pointer;
       border-radius: 5px;
       font-size: 16px;
-      transition: all 0.3s ease;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
     }
-    .nav-buttons button:hover, .contact-buttons button:hover {
-      background-color: #777;
-      border-color: #bbb;
+
+    .nav-buttons button:hover, .contact-buttons button:hover,
+    .nav-buttons button:focus, .contact-buttons button:focus {
+      background-color: var(--button-hover);
+      border-color: var(--button-border-hover);
+      outline: none;
     }
+
+    /* Sections */
     section {
       max-width: 900px;
       margin: 20px auto;
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--section-bg);
       padding: 20px;
       border-radius: 5px;
       box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
       text-align: left;
     }
+
+    /* Headings */
     h2 {
       display: flex;
       align-items: center;
       justify-content: center;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: #bbb;
+      color: var(--heading-color);
       border-bottom: 2px solid #777;
       padding-bottom: 5px;
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    li {
       margin-bottom: 15px;
-      line-height: 1.6;
     }
-    li strong {
-      display: block;
-      margin-bottom: 5px;
+
+    @media (max-width: 600px) {
+      header, section {
+        padding: 15px;
+      }
+      .nav-buttons button, .contact-buttons button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
     }
   </style>
 </head>
@@ -79,12 +107,12 @@
     <h1>Andreas Mayer Arriaga</h1>
     <p>Graduate | Passionate about Sustainability & Innovation</p>
     <div class="nav-buttons">
-      <button onclick="scrollToSection('personal')">Personal Info</button>
-      <button onclick="scrollToSection('education')">Education 🎓</button>
-      <button onclick="scrollToSection('experience')">Work Experience 💼</button>
-      <button onclick="scrollToSection('voluntary')">Voluntary Experience 🤝</button>
-      <button onclick="scrollToSection('skills')">Skills & Interests 🚀</button>
-      <button onclick="scrollToSection('contact')">Contact 📞</button>
+      <button data-target="personal">Personal Info</button>
+      <button data-target="education">Education 🎓</button>
+      <button data-target="experience">Work Experience 💼</button>
+      <button data-target="voluntary">Voluntary Experience 🤝</button>
+      <button data-target="skills">Skills & Interests 🚀</button>
+      <button data-target="contact">Contact 📞</button>
     </div>
   </header>
 
@@ -105,19 +133,19 @@
         <strong>Hochschule der Bayerischen Wirtschaft (HDBW)</strong>
         <br><em>Bachelor's Degree in Business & Logistics (2019–2023)</em>
         <br><em>Location:</em> Munich, BY
-        <br>Successfully transitioned from Mexico to Germany after completing the German Abitur.
-        <br>Collaborated with Amazon on a thesis optimizing sustainable fulfillment warehousing, demonstrating expertise in environmental logistics.
+        <br>Transitioned from Mexico to Germany after completing the German Abitur.
+        <br>Collaborated with Amazon on a thesis optimizing sustainable fulfillment warehousing.
       </li>
       <li>
         <strong>Arden University</strong>
         <br><em>MSc Project Management (In Progress, 2024–Exp.2025)</em>
-        <br>Currently pursuing an online Master's in Project Management to enhance problem-solving skills, optimize processes, and apply Six Sigma methodologies.
-        <br>Aim to achieve PMP certification from PMI.
+        <br>Pursuing an online Master's in Project Management to enhance problem-solving skills and optimize processes using Six Sigma methodologies.
+        <br>Aiming for PMP certification from PMI.
       </li>
       <li>
         <strong>Arden University</strong>
-        <br><em>MSc Psychology (discontinued, Oct.2023–Feb.2024)</em>
-        <br>Briefly pursued a Master's in Psychology, gaining valuable insights before redirecting focus toward project management.
+        <br><em>MSc Psychology (Discontinued, Oct.2023–Feb.2024)</em>
+        <br>Briefly pursued to gain insights before refocusing on project management.
       </li>
     </ul>
   </section>
@@ -135,22 +163,22 @@
       <li>
         <strong>Amazon – Project Management Intern</strong>
         <br><em>Gera, TH | Apr.2022–Sep.2022</em>
-        <br>• Increased operational efficiency at the LEJ5 fulfillment center using Six Sigma methodologies, optimizing workflows and reducing cycle times.
-        <br>• Improved workplace conditions by leading 20+ initiatives at the Gera warehouse, enhancing employee satisfaction and retention.
-        <br>• Streamlined vendor management and provided weekly reports to site leadership, driving data-backed decision-making.
-        <br>• Featured in the "Amazon DE-Stars" commercial, showcasing Amazon’s commitment to employee engagement and innovation.
+        <br>• Increased operational efficiency at the LEJ5 fulfillment center using Six Sigma methodologies.
+        <br>• Improved workplace conditions by leading 20+ initiatives.
+        <br>• Streamlined vendor management and provided weekly reports to site leadership.
+        <br>• Featured in the "Amazon DE-Stars" commercial.
       </li>
       <li>
         <strong>Somos Censura – Project Specialist</strong>
         <br><em>Remote, Mexico City | Apr.2024–Jun.2024</em>
-        <br>• Introduced weekly and quarterly reviews, enhancing team alignment with the CEO and Board.
-        <br>• Optimized big data processes, driving data-driven decision-making.
+        <br>• Introduced weekly and quarterly reviews to enhance team alignment with the CEO and Board.
+        <br>• Optimized big data processes for data-driven decision-making.
       </li>
       <li>
         <strong>Zenjob – Part-time Student Worker</strong>
         <br><em>Munich, BY | Oct.2020–Oct.2021</em>
-        <br>• Performed diverse administrative and sales-related tasks as part of the Munich student job program.
-        <br>• Gained experience as a Covid Hostess at Messe München, cashier at Edeka, and floor sales staff at Primark and Superdry.
+        <br>• Performed various administrative and sales-related tasks.
+        <br>• Gained experience in roles such as Covid Hostess at Messe München, cashier at Edeka, and floor sales staff at Primark and Superdry.
       </li>
     </ul>
   </section>
@@ -161,15 +189,15 @@
       <li>
         <strong>Laser Dental Clinic by Armacu – Part-time Admin Support Staff</strong>
         <br><em>Puebla, Mexico | Aug.2017–Sep.2019 &amp; Oct.2023–Mar.2024</em>
-        <br>• Managed social media, patient KPI reporting, invoicing, and website updates for a family-owned dental practice.
-        <br>• Advised on operations and strategic decisions while overseeing website development and maintenance.
+        <br>• Managed social media, patient KPI reporting, invoicing, and website updates.
+        <br>• Advised on operations and strategic decisions, overseeing website development and maintenance.
       </li>
     </ul>
   </section>
 
   <section id="skills">
     <h2>Skills & Interests 🚀</h2>
-    <p><strong>Technical Skills:</strong> Proficient in Excel (Advanced), Tableau, Python, API handling, AI integration, Microsoft Office (Excel, Word, PowerPoint, Outlook), and web development (HTML, CSS, JavaScript).</p>
+    <p><strong>Technical Skills:</strong> Excel (Advanced), Tableau, Python, API handling, AI integration, Microsoft Office (Excel, Word, PowerPoint, Outlook), web development (HTML, CSS, JavaScript).</p>
     <p><strong>Languages:</strong> Spanish (C2), German (C2), English (C1).</p>
     <p><strong>Interests:</strong> Sustainable logistics (featured in OTZ), blockchain & cryptocurrencies, calisthenics, alpine skiing, scuba diving (Advanced Open Water), martial arts (Junior Black Belt in Taekwondo), soccer & American football (UDLAP), music (piano & guitar), and community service (recognized by UNAM).</p>
   </section>
@@ -177,15 +205,41 @@
   <section id="contact">
     <h2>Contact 📞</h2>
     <div class="contact-buttons">
-      <button onclick="location.href='mailto:mayerandreas3@gmail.com'">📧 Email Me</button>
-      <button onclick="location.href='https://wa.me/4917645251547'">💬 WhatsApp Me</button>
+      <button id="emailButton">📧 Email Me</button>
+      <button id="whatsappButton">💬 WhatsApp Me</button>
     </div>
   </section>
 
   <script>
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }
+    // Smooth scrolling function with error-checking
+    const scrollToSection = (id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        console.warn(`No element found with ID: ${id}`);
+      }
+    };
+
+    // Set up navigation buttons using event delegation and data attributes
+    document.querySelectorAll('.nav-buttons button').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const targetId = e.target.dataset.target;
+        if (targetId) scrollToSection(targetId);
+      });
+    });
+
+    // Contact functions
+    const contactWhatsApp = () => {
+      window.location.href = "https://wa.me/5212222393453";
+    };
+
+    const contactEmail = () => {
+      window.location.href = "mailto:mayerandreas3@gmail.com";
+    };
+
+    document.getElementById('whatsappButton').addEventListener('click', contactWhatsApp);
+    document.getElementById('emailButton').addEventListener('click', contactEmail);
   </script>
 </body>
 </html>
