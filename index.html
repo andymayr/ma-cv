@@ -3,253 +3,274 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Andreas Mayer Arriaga - Professional Portfolio</title>
+  <title>Andreas Mayer Arriaga — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary-bg: #1a1a1a;
-      --secondary-bg: #333;
-      --header-bg: #222;
-      --button-bg: #555;
-      --button-hover: #777;
-      --button-border: #999;
-      --button-border-hover: #bbb;
-      --text-color: #ddd;
-      --heading-color: #bbb;
-      --section-bg: rgba(255, 255, 255, 0.1);
+    :root{
+      --bg: #f6f7f8;
+      --paper: #ffffff;
+      --ink: #1a1d1f;
+      --muted: #6b7278;
+      --grid: #e9ecef;
+      --blue: #2f6da9;       /* muted nordic blue */
+      --yellow: #e6b800;     /* soft amber */
+      --slate: #a7adb3;      /* warm gray */
+      --radius: 14px;
+      --shadow: 0 4px 18px rgba(20, 23, 26, 0.08);
+      --shadow-soft: 0 2px 10px rgba(20, 23, 26, 0.06);
+      --maxw: 1200px;
+      --sidebar: 280px;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:linear-gradient(0deg,var(--bg),var(--bg)), var(--bg);
+      -webkit-font-smoothing: antialiased;
+      line-height:1.6;
     }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
-      color: var(--text-color);
-      text-align: center;
-      line-height: 1.6;
+    /* App grid */
+    .app{
+      min-height:100dvh;
+      display:grid;
+      grid-template-columns: minmax(220px, var(--sidebar)) 1fr;
+      grid-template-rows: auto 1fr;
+      gap: 0;
     }
-
-    /* Header */
-    header {
-      background: var(--header-bg);
-      color: #fff;
-      padding: 20px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      border-bottom: 3px solid #666;
+    aside{
+      grid-row: 1 / span 2;
+      border-right:1px solid var(--grid);
+      background: var(--paper);
+      padding: 32px 24px;
     }
-
-    /* Navigation and contact buttons */
-    .nav-buttons, .contact-buttons {
-      margin-top: 10px;
+    main{
+      display:flex;
+      flex-direction:column;
+      min-width:0;
     }
-
-    .nav-buttons button, .contact-buttons button {
-      background-color: var(--button-bg);
-      color: white;
-      border: 2px solid var(--button-border);
-      padding: 10px 20px;
-      margin: 5px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 16px;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
+    /* Header (hero) */
+    .hero{
+      padding: 56px clamp(20px, 4vw, 48px);
+      background: var(--paper);
+      border-bottom:1px solid var(--grid);
     }
-
-    .nav-buttons button:hover, .contact-buttons button:hover,
-    .nav-buttons button:focus, .contact-buttons button:focus {
-      background-color: var(--button-hover);
-      border-color: var(--button-border-hover);
-      outline: none;
-    }
-
-    /* Sections */
-    section {
-      max-width: 900px;
-      margin: 20px auto;
-      background: var(--section-bg);
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      text-align: left;
-    }
-
-    /* Headings */
-    h2 {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--heading-color);
-      border-bottom: 2px solid #777;
-      padding-bottom: 5px;
-      margin-bottom: 15px;
-    }
-
-    @media (max-width: 600px) {
-      header, section {
-        padding: 15px;
-      }
-      .nav-buttons button, .contact-buttons button {
-        font-size: 14px;
-        padding: 8px 16px;
-      }
+    .name{font-weight:700; letter-spacing:0.2px; font-size: clamp(28px, 4.5vw, 44px); line-height:1.15;}
+    .tag{color:var(--muted); font-weight:500; margin-top:8px; font-size: clamp(14px, 1.6vw, 18px)}
+    /* Sidebar nav */
+    .nav{display:flex; flex-direction:column; gap:8px; position:sticky; top:24px}
+    .brand{font-weight:700; font-size:18px; margin-bottom:18px}
+    .nav a{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--ink); padding:10px 12px; border-radius:10px; transition:.2s background-color;}
+    .nav a:hover, .nav a:focus{background:#f0f2f4}
+    .dot{width:8px; height:8px; border-radius:50%}
+    .b{background:var(--blue)} .y{background:var(--yellow)} .s{background:var(--slate)}
+    /* Content layout */
+    .content{max-width: var(--maxw); margin: 0 auto; padding: 32px clamp(20px, 4vw, 48px); display:grid; gap:24px}
+    section.card{background:var(--paper); border:1px solid var(--grid); border-radius:var(--radius); box-shadow: var(--shadow); padding:28px}
+    h2{font-size:18px; letter-spacing:.4px; text-transform:uppercase; color:#2b2f33; margin:0 0 18px; display:flex; align-items:center; gap:12px}
+    h2 .rule{flex:1; height:1px; background:linear-gradient(90deg, var(--grid), rgba(0,0,0,0));}
+    .kv{display:grid; grid-template-columns: 140px 1fr; row-gap:10px; column-gap:16px}
+    .kv dt{color:var(--muted)}
+    .kv dd{margin:0}
+    /* Horizontal card rows */
+    .row{display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px}
+    .item{background:#fff; border:1px solid var(--grid); border-radius:12px; box-shadow: var(--shadow-soft); padding:18px}
+    .item h3{margin:0 0 6px; font-size:16px}
+    .meta{color:var(--muted); font-size:13px; margin-bottom:10px}
+    ul.clean{list-style:none; padding:0; margin:0; display:grid; gap:6px}
+    /* Chips */
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+    .chip{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid var(--grid); background:#fafbfc}
+    /* Footer/contact buttons */
+    .actions{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{appearance:none; border:1px solid var(--grid); background:#fff; padding:10px 14px; border-radius:10px; font-weight:600; cursor:pointer}
+    .btn.primary{border-color:var(--blue); color:#fff; background:var(--blue)}
+    .btn.secondary{border-color:var(--yellow); background:#fff; color:#604a00}
+    /* Responsive tweaks */
+    @media (max-width: 760px){
+      .app{grid-template-columns: 1fr}
+      aside{grid-row:auto; position:sticky; top:0; z-index:2; border-right:none; border-bottom:1px solid var(--grid);}
+      .nav{flex-direction:row; overflow:auto}
+      .kv{grid-template-columns: 1fr}
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Andreas Mayer Arriaga</h1>
-    <p>Graduate | Passionate about Sustainability & Innovation</p>
-    <div class="nav-buttons">
-      <button data-target="personal">Personal Info</button>
-      <button data-target="education">Education 🎓</button>
-      <button data-target="experience">Work Experience 💼</button>
-      <button data-target="voluntary">Voluntary Experience 🤝</button>
-      <button data-target="skills">Skills & Interests 🚀</button>
-      <button data-target="contact">Contact 📞</button>
-    </div>
-  </header>
+  <div class="app">
+    <aside>
+      <div class="brand">AMA</div>
+      <nav class="nav">
+        <a href="#personal"><span class="dot b"></span><span>Personal</span></a>
+        <a href="#education"><span class="dot y"></span><span>Education</span></a>
+        <a href="#experience"><span class="dot s"></span><span>Experience</span></a>
+        <a href="#voluntary"><span class="dot b"></span><span>Voluntary</span></a>
+        <a href="#skills"><span class="dot y"></span><span>Skills</span></a>
+        <a href="#contact"><span class="dot s"></span><span>Contact</span></a>
+      </nav>
+    </aside>
+    <main>
+      <header class="hero">
+        <div class="name">Andreas Mayer Arriaga</div>
+        <div class="tag">Sustainability- and operations‑minded graduate • Project management • Six Sigma</div>
+      </header>
+      <div class="content">
+        <section id="personal" class="card">
+          <h2>Personal <span class="rule"></span></h2>
+          <dl class="kv">
+            <dt>Name</dt><dd>Andreas Mayer Arriaga</dd>
+            <dt>Location</dt><dd>Teisendorf, BY</dd>
+            <dt>Email</dt><dd><a href="mailto:mayerandreas3@gmail.com">mayerandreas3@gmail.com</a></dd>
+            <dt>Phone</dt><dd><a href="tel:+4917645251547">+49 176 4525 1547</a></dd>
+          </dl>
+        </section>
 
-  <section id="personal">
-    <h2>Personal Information</h2>
-    <ul>
-      <li><strong>Name:</strong> Andreas Mayer Arriaga</li>
-      <li><strong>Location:</strong> Teisendorf, BY</li>
-      <li><strong>Email:</strong> mayerandreas3@gmail.com</li>
-      <li><strong>Phone:</strong> +49 17645251547</li>
-    </ul>
-  </section>
+        <section id="education" class="card">
+          <h2>Education <span class="rule"></span></h2>
+          <div class="row">
+            <article class="item">
+              <h3>HDBW — B.Sc. Business & Logistics</h3>
+              <div class="meta">Munich, BY • 2019–2023</div>
+              <ul class="clean">
+                <li>Transitioned from Mexico to Germany after completing the Abitur.</li>
+                <li>Thesis with Amazon on sustainable fulfillment warehousing.</li>
+              </ul>
+            </article>
+            <article class="item">
+              <h3>Arden University — MSc Project Management</h3>
+              <div class="meta">Online • 2024–Exp. 2025</div>
+              <ul class="clean">
+                <li>Focus: problem solving, process optimization, Six Sigma.</li>
+                <li>Goal: PMP certification (PMI).</li>
+              </ul>
+            </article>
+            <article class="item">
+              <h3>Arden University — MSc Psychology</h3>
+              <div class="meta">Oct 2023–Feb 2024 (discontinued)</div>
+              <ul class="clean">
+                <li>Exploratory study prior to refocusing on project management.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
 
-  <section id="education">
-    <h2>Education 🎓</h2>
-    <ul>
-      <li>
-        <strong>Hochschule der Bayerischen Wirtschaft (HDBW)</strong>
-        <br><em>Bachelor's Degree in Business & Logistics (2019–2023)</em>
-        <br><em>Location:</em> Munich, BY
-        <br>Transitioned from Mexico to Germany after completing the German Abitur.
-        <br>Collaborated with Amazon on a thesis optimizing sustainable fulfillment warehousing.
-      </li>
-      <li>
-        <strong>Arden University</strong>
-        <br><em>MSc Project Management (In Progress, 2024–Exp.2025)</em>
-        <br>Pursuing an online Master's in Project Management to enhance problem-solving skills and optimize processes using Six Sigma methodologies.
-        <br>Aiming for PMP certification from PMI.
-      </li>
-      <li>
-        <strong>Arden University</strong>
-        <br><em>MSc Psychology (Discontinued, Oct.2023–Feb.2024)</em>
-        <br>Briefly pursued to gain insights before refocusing on project management.
-      </li>
-    </ul>
-  </section>
+        <section id="experience" class="card">
+          <h2>Experience <span class="rule"></span></h2>
+          <div class="row">
+            <article class="item">
+              <h3>Amazon — Area Manager (Performance Buffer People)</h3>
+              <div class="meta">Inbound Stow • May 2025–Nov 2025</div>
+              <ul class="clean">
+                <li>Led 200+ associates and 3 process leads in high‑velocity ops.</li>
+                <li>200k+ units/shift; prioritization and buffer strategies to hit SLAs.</li>
+                <li>Cut idle time by 3% via observation/coaching and bottleneck removal.</li>
+                <li>Tools: SCADA (Visio), Inbound Mgmt System, Workflow Mgmt • SL2 certified.</li>
+              </ul>
+            </article>
+            <article class="item">
+              <h3>Amazon — Change & Sustainability Ambassador</h3>
+              <div class="meta">Gera, TH • Oct 2022–Jun 2023</div>
+              <ul class="clean">
+                <li>Raised recycling rates from 77% → 90%.</li>
+                <li>Partnered with Veolia Germany to divert waste from incineration.</li>
+                <li>Applied DMAIC/DMAIDV to design efficient recycling pathways.</li>
+              </ul>
+            </article>
+            <article class="item">
+              <h3>Amazon — Project Management Intern</h3>
+              <div class="meta">Gera, TH • Apr 2022–Sep 2022</div>
+              <ul class="clean">
+                <li>Improved LEJ5 operational efficiency using Six Sigma.</li>
+                <li>Led 20+ workplace improvements and vendor streamlining.</li>
+                <li>Weekly reporting to site leadership; featured in “Amazon DE‑Stars”.</li>
+              </ul>
+            </article>
+            <article class="item">
+              <h3>Somos Censura — Project Specialist</h3>
+              <div class="meta">Remote, Mexico City • Apr 2024–Jun 2024</div>
+              <ul class="clean">
+                <li>Introduced weekly/quarterly reviews to align with CEO and Board.</li>
+                <li>Optimized big‑data workflows for decision‑making.</li>
+              </ul>
+            </article>
+            <article class="item">
+              <h3>Zenjob — Student Worker</h3>
+              <div class="meta">Munich, BY • Oct 2020–Oct 2021</div>
+              <ul class="clean">
+                <li>Administrative and sales tasks across multiple placements.</li>
+                <li>Roles: Covid Hostess (Messe München), cashier (Edeka), floor staff (Primark, Superdry).</li>
+              </ul>
+            </article>
+          </div>
+        </section>
 
-  <section id="experience">
-    <h2>Work Experience 💼</h2>
-    <ul>
-      <!-- NEW: Amazon Area Manager (Performance Buffer People) -->
-      <li>
-        <strong>Amazon – Area Manager (Performance Buffer People)</strong>
-        <br><em>Inbound Stow (Fulfillment Center) | May.2025–Nov.2025</em>
-        <br>• Managed <strong>200+ Associates</strong> and led <strong>3 Process Leads</strong> to sustain high‑velocity operations.
-        <br>• Moved <strong>200k+ units per shift</strong>; implemented product prioritization and buffer strategies to maintain SLA adherence.
-        <br>• Reduced site‑wide <strong>idle time by 3%</strong> via targeted observation/coaching ("idle talks") and micro‑bottleneck removal, improving TPH.
-        <br>• Operated with <strong>SCADA (Visio)</strong>, <strong>Inbound Management System</strong>, and <strong>Workflow Management</strong>; achieved <strong>SL2 certification</strong>.
-      </li>
+        <section id="voluntary" class="card">
+          <h2>Voluntary <span class="rule"></span></h2>
+          <div class="row">
+            <article class="item">
+              <h3>Laser Dental Clinic by Armacu — Part‑time Admin Support</h3>
+              <div class="meta">Puebla, Mexico • Aug 2017–Sep 2019 & Oct 2023–Mar 2024</div>
+              <ul class="clean">
+                <li>Managed social, patient KPI reporting, invoicing, website updates.</li>
+                <li>Advised on operations and oversaw web development/maintenance.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
 
-      <li>
-        <strong>Amazon – Change & Sustainability Ambassador</strong>
-        <br><em>Gera, TH | Oct.2022–Jun.2023</em>
-        <br>• Increased recycling rates from 77% to 90% through optimized waste management.
-        <br>• Developed recycling initiatives with Veolia Germany, diverting thousands of tons from incineration.
-        <br>• Applied Six Sigma DMAIC/DMAIDV methodologies to create efficient recycling pathways.
-      </li>
-      <li>
-        <strong>Amazon – Project Management Intern</strong>
-        <br><em>Gera, TH | Apr.2022–Sep.2022</em>
-        <br>• Increased operational efficiency at the LEJ5 fulfillment center using Six Sigma methodologies.
-        <br>• Improved workplace conditions by leading 20+ initiatives.
-        <br>• Streamlined vendor management and provided weekly reports to site leadership.
-        <br>• Featured in the "Amazon DE-Stars" commercial.
-      </li>
-      <li>
-        <strong>Somos Censura – Project Specialist</strong>
-        <br><em>Remote, Mexico City | Apr.2024–Jun.2024</em>
-        <br>• Introduced weekly and quarterly reviews to enhance team alignment with the CEO and Board.
-        <br>• Optimized big data processes for data-driven decision-making.
-      </li>
-      <li>
-        <strong>Zenjob – Part-time Student Worker</strong>
-        <br><em>Munich, BY | Oct.2020–Oct.2021</em>
-        <br>• Performed various administrative and sales-related tasks.
-        <br>• Gained experience in roles such as Covid Hostess at Messe München, cashier at Edeka, and floor sales staff at Primark and Superdry.
-      </li>
-    </ul>
-  </section>
+        <section id="skills" class="card">
+          <h2>Skills <span class="rule"></span></h2>
+          <div class="chips">
+            <span class="chip">Excel (Advanced)</span>
+            <span class="chip">Tableau</span>
+            <span class="chip">Python</span>
+            <span class="chip">APIs</span>
+            <span class="chip">AI integration</span>
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">JavaScript</span>
+          </div>
+          <div class="chips">
+            <span class="chip">Spanish C2</span>
+            <span class="chip">German C2</span>
+            <span class="chip">English C1</span>
+          </div>
+          <div class="chips">
+            <span class="chip">Sustainable logistics</span>
+            <span class="chip">Blockchain</span>
+            <span class="chip">Calisthenics</span>
+            <span class="chip">Alpine skiing</span>
+            <span class="chip">Scuba (AOW)</span>
+            <span class="chip">Taekwondo (Jr Black Belt)</span>
+            <span class="chip">Soccer</span>
+            <span class="chip">American football (UDLAP)</span>
+            <span class="chip">Music</span>
+            <span class="chip">Community service</span>
+          </div>
+        </section>
 
-  <section id="voluntary">
-    <h2>Voluntary Experience 🤝</h2>
-    <ul>
-      <li>
-        <strong>Laser Dental Clinic by Armacu – Part-time Admin Support Staff</strong>
-        <br><em>Puebla, Mexico | Aug.2017–Sep.2019 &amp; Oct.2023–Mar.2024</em>
-        <br>• Managed social media, patient KPI reporting, invoicing, and website updates.
-        <br>• Advised on operations and strategic decisions, overseeing website development and maintenance.
-      </li>
-    </ul>
-  </section>
+        <section id="contact" class="card">
+          <h2>Contact <span class="rule"></span></h2>
+          <div class="actions">
+            <a class="btn primary" href="mailto:mayerandreas3@gmail.com">Email Me</a>
+            <a class="btn secondary" href="https://wa.me/5212222393453">WhatsApp</a>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
 
-  <section id="skills">
-    <h2>Skills & Interests 🚀</h2>
-    <p><strong>Technical Skills:</strong> Excel (Advanced), Tableau, Python, API handling, AI integration, Microsoft Office (Excel, Word, PowerPoint, Outlook), web development (HTML, CSS, JavaScript).</p>
-    <p><strong>Languages:</strong> Spanish (C2), German (C2), English (C1).</p>
-    <p><strong>Interests:</strong> Sustainable logistics (featured in OTZ), blockchain & cryptocurrencies, calisthenics, alpine skiing, scuba diving (Advanced Open Water), martial arts (Junior Black Belt in Taekwondo), soccer & American football (UDLAP), music (piano & guitar), and community service (recognized by UNAM).</p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact 📞</h2>
-    <div class="contact-buttons">
-      <button id="emailButton">📧 Email Me</button>
-      <button id="whatsappButton">💬 WhatsApp Me</button>
-    </div>
-  </section>
-
+  <!-- Minimal JS: smooth in-page nav -->
   <script>
-    // Smooth scrolling function with error-checking
-    const scrollToSection = (id) => {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        console.warn(`No element found with ID: ${id}`);
-      }
-    };
-
-    // Set up navigation buttons using event delegation and data attributes
-    document.querySelectorAll('.nav-buttons button').forEach(button => {
-      button.addEventListener('click', (e) => {
-        const targetId = e.target.dataset.target;
-        if (targetId) scrollToSection(targetId);
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
       });
     });
-
-    // Contact functions
-    const contactWhatsApp = () => {
-      window.location.href = "https://wa.me/5212222393453";
-    };
-
-    const contactEmail = () => {
-      window.location.href = "mailto:mayerandreas3@gmail.com";
-    };
-
-    document.getElementById('whatsappButton').addEventListener('click', contactWhatsApp);
-    document.getElementById('emailButton').addEventListener('click', contactEmail);
   </script>
 </body>
 </html>
