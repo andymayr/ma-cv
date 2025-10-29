@@ -13,8 +13,9 @@
   --shadow: 0 4px 18px rgba(20, 23, 26, 0.08);
   --shadow-hover: 0 6px 24px rgba(20, 23, 26, 0.12);
 }
-/* Dark theme */
-[data-theme="dark"] {
+
+/* Dark theme - using .dark class on body */
+body.dark {
   --primary-bg: #1a1a1a;
   --secondary-bg: #2a2d2f;
   --header-bg: #222;
@@ -28,11 +29,13 @@
   --shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
   --shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.4);
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: Arial, sans-serif;
   background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
@@ -41,6 +44,7 @@ body {
   line-height: 1.6;
   transition: background 0.3s ease, color 0.3s ease;
 }
+
 /* Header */
 header {
   background: var(--header-bg);
@@ -55,6 +59,7 @@ header {
   gap: 1rem;
   transition: background 0.3s ease;
 }
+
 /* Theme toggle button */
 .theme-toggle {
   background: var(--button-bg);
@@ -66,20 +71,69 @@ header {
   font-size: 1.2rem;
   transition: all 0.3s ease;
 }
+
 .theme-toggle:hover {
   background: var(--button-hover);
   border-color: var(--button-border-hover);
   transform: translateY(-2px);
   box-shadow: var(--shadow);
 }
+
 .theme-toggle:active {
   transform: translateY(0);
 }
+
+/* Hamburger menu button - hidden by default */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: var(--text-color);
+  margin: 3px 0;
+  transition: all 0.3s ease;
+  border-radius: 3px;
+}
+
+/* Overlay for mobile menu */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Sidebar navigation */
+.sidebar {
+  transition: transform 0.3s ease;
+}
+
 /* Navigation and Contact Buttons */
 .nav-buttons, .contact-buttons {
   margin-top: 10px;
 }
-.nav-buttons button, .contact-buttons button {
+
+.nav-buttons button, .contact-buttons button,
+.nav-buttons a, .contact-buttons a {
   background-color: var(--button-bg);
   color: white;
   border: 2px solid var(--button-border);
@@ -89,21 +143,32 @@ header {
   border-radius: 5px;
   font-size: 16px;
   transition: all 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
 }
+
 .nav-buttons button:hover,
 .contact-buttons button:hover,
+.nav-buttons a:hover,
+.contact-buttons a:hover,
 .nav-buttons button:focus,
-.contact-buttons button:focus {
+.contact-buttons button:focus,
+.nav-buttons a:focus,
+.contact-buttons a:focus {
   background-color: var(--button-hover);
   border-color: var(--button-border-hover);
   outline: none;
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
 }
+
 .nav-buttons button:active,
-.contact-buttons button:active {
+.contact-buttons button:active,
+.nav-buttons a:active,
+.contact-buttons a:active {
   transform: translateY(0);
 }
+
 /* Sections */
 section {
   max-width: 900px;
@@ -116,10 +181,12 @@ section {
   text-align: left;
   transition: all 0.3s ease;
 }
+
 section:hover {
   box-shadow: var(--shadow-hover);
   transform: translateY(-2px);
 }
+
 /* Headings */
 h2 {
   display: flex;
@@ -133,33 +200,78 @@ h2 {
   margin-bottom: 15px;
   transition: color 0.3s ease;
 }
+
 /* Links */
 a {
   color: var(--button-bg);
   text-decoration: none;
   transition: all 0.3s ease;
 }
+
 a:hover {
   color: var(--button-hover);
-  transform: translateX(2px);
 }
+
 /* Mobile responsive styles */
 @media (max-width: 768px) {
+  /* Show hamburger menu on mobile */
+  .hamburger {
+    display: flex;
+  }
+  
+  /* Header adjustments for mobile */
   header {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     padding: 15px;
+    position: relative;
   }
   
-  header, section {
-    padding: 15px;
+  /* Sidebar becomes slide-in menu on mobile */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--header-bg);
+    z-index: 1000;
+    padding: 60px 20px 20px;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
   }
   
-  .nav-buttons button, .contact-buttons button {
-    font-size: 14px;
-    padding: 8px 16px;
+  .sidebar.active {
+    left: 0;
   }
   
+  /* Navigation in sidebar */
+  .sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .sidebar .nav-buttons,
+  .sidebar .contact-buttons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .sidebar .nav-buttons button,
+  .sidebar .nav-buttons a,
+  .sidebar .contact-buttons button,
+  .sidebar .contact-buttons a {
+    width: 100%;
+    margin: 5px 0;
+    padding: 12px;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  /* Content sections */
   section {
     margin: 15px;
     padding: 15px;
@@ -173,10 +285,25 @@ a:hover {
     padding: 8px 12px;
     font-size: 1rem;
   }
+  
+  /* Make buttons touch-friendly */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
+
 @media (max-width: 480px) {
   header {
     padding: 10px;
+  }
+  
+  header h1 {
+    font-size: 1.2rem;
+  }
+  
+  .sidebar {
+    width: 240px;
   }
   
   section {
@@ -184,13 +311,21 @@ a:hover {
     padding: 12px;
   }
   
-  .nav-buttons button, .contact-buttons button {
-    font-size: 13px;
-    padding: 6px 12px;
+  .nav-buttons button,
+  .contact-buttons button,
+  .nav-buttons a,
+  .contact-buttons a {
+    font-size: 14px;
+    padding: 10px 14px;
     margin: 3px;
   }
   
   h2 {
     font-size: 1.1rem;
+  }
+  
+  .theme-toggle {
+    padding: 6px 10px;
+    font-size: 0.9rem;
   }
 }
