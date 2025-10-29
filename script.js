@@ -2,20 +2,22 @@
 const initThemeToggle = () => {
   const themeToggle = document.getElementById('themeToggle');
   const themeIcon = document.getElementById('themeIcon');
-  const html = document.documentElement;
+  const body = document.body;
   
   if (!themeToggle) return; // Exit if theme toggle button doesn't exist
   
   // Check for saved theme preference or default to light mode
   const currentTheme = localStorage.getItem('theme') || 'light';
-  html.setAttribute('data-theme', currentTheme);
+  if (currentTheme === 'dark') {
+    body.classList.add('dark');
+  }
   updateThemeIcon(currentTheme);
   
   themeToggle.addEventListener('click', () => {
-    const theme = html.getAttribute('data-theme');
-    const newTheme = theme === 'light' ? 'dark' : 'light';
+    const isDark = body.classList.contains('dark');
+    const newTheme = isDark ? 'light' : 'dark';
     
-    html.setAttribute('data-theme', newTheme);
+    body.classList.toggle('dark');
     localStorage.setItem('theme', newTheme);
     updateThemeIcon(newTheme);
   });
@@ -24,7 +26,44 @@ const initThemeToggle = () => {
     if (themeIcon) {
       themeIcon.textContent = theme === 'light' ? '🌙' : '☀️';
     }
+    if (themeToggle) {
+      themeToggle.setAttribute('aria-label', `Switch to ${theme === 'light' ? 'dark' : 'light'} mode`);
+    }
   }
+};
+
+// Mobile menu toggle functionality
+const initMobileMenu = () => {
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.querySelector('.overlay');
+  
+  if (!hamburger || !sidebar) return;
+  
+  hamburger.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+    if (overlay) overlay.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', sidebar.classList.contains('active'));
+  });
+  
+  // Close menu when clicking overlay
+  if (overlay) {
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  }
+  
+  // Close menu when clicking a nav link
+  const navLinks = sidebar.querySelectorAll('nav a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      if (overlay) overlay.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
 };
 
 // Smooth scrolling function with error-checking
@@ -37,49 +76,18 @@ const scrollToSection = (id) => {
   }
 };
 
-// Set up navigation buttons using event delegation and data attributes
-const initNavButtons = () => {
-  const navButtons = document.querySelectorAll('.nav-buttons button');
-  navButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-      const targetId = e.target.dataset.target;
-      if (targetId) scrollToSection(targetId);
+// Initialize all functionality when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  initThemeToggle();
+  initMobileMenu();
+  
+  // Add smooth scroll to all nav links
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      scrollToSection(targetId);
     });
   });
-};
-
-// Contact functions
-const contactWhatsApp = () => {
-  window.location.href = "https://wa.me/5212222393453";
-};
-
-const contactEmail = () => {
-  window.location.href = "mailto:mayerandreas3@gmail.com";
-};
-
-// Initialize contact buttons
-const initContactButtons = () => {
-  const whatsappButton = document.getElementById('whatsappButton');
-  const emailButton = document.getElementById('emailButton');
-  
-  if (whatsappButton) {
-    whatsappButton.addEventListener('click', contactWhatsApp);
-  }
-  
-  if (emailButton) {
-    emailButton.addEventListener('click', contactEmail);
-  }
-};
-
-// Initialize all functionality when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    initThemeToggle();
-    initNavButtons();
-    initContactButtons();
-  });
-} else {
-  initThemeToggle();
-  initNavButtons();
-  initContactButtons();
-}
+});
