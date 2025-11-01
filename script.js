@@ -1,7 +1,6 @@
 // Theme toggle functionality
 const initThemeToggle = () => {
-  const themeToggle = document.getElementById('themeToggle');
-  const themeIcon = document.getElementById('themeIcon');
+  const themeToggle = document.getElementById('dark-mode-toggle');
   const body = document.body;
   
   if (!themeToggle) return; // Exit if theme toggle button doesn't exist
@@ -23,8 +22,9 @@ const initThemeToggle = () => {
   });
   
   function updateThemeIcon(theme) {
-    if (themeIcon) {
-      themeIcon.textContent = theme === 'light' ? '🌙' : '☀️';
+    const icon = themeToggle.querySelector('.icon');
+    if (icon) {
+      icon.textContent = theme === 'light' ? '🌙' : '☀️';
     }
     if (themeToggle) {
       themeToggle.setAttribute('aria-label', `Switch to ${theme === 'light' ? 'dark' : 'light'} mode`);
